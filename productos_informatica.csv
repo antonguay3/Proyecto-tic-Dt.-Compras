@@ -1,0 +1,11 @@
+﻿ID,Nombre del producto,Descripción (otras datos importantes del producto),Precio de compra,Precio de venta,Stock actual,Stock mínimo deseado,Proveedor,Lote
+1,Portátil HP 15s-eq2135ns,"AMD Ryzen 5 5500U, 16GB RAM, 512GB SSD, 15.6'' Full HD",480,649,12,5,HP,4
+2,Monitor LG UltraGear 27GL850-B,"27'' QHD, Nano IPS, 144Hz, 1ms, G-Sync compatible",320,399,8,3,LG,3
+3,Smartphone Samsung Galaxy S24,"8GB RAM, 256GB almacenamiento, 6.1'' AMOLED, 5G",680,899,15,5,Samsung,8
+4,PC Gaming MSI Aegis R,"Intel i7-13700KF, RTX 4070, 32GB RAM, 1TB SSD",1450,1899,4,2,MSI,2
+5,Teclado Mecánico Logitech G Pro X,"Switches intercambiables, RGB, cable desmontable",85,129,20,8,Logitech,10
+6,Ratón Razer DeathAdder V3,"Sensor Focus Pro 30K, 8 botones programables",60,89,25,10,Razer,20
+7,Memoria RAM Corsair Vengeance RGB 32GB (2x16GB) DDR5 6000MHz,"Latencia CL36, RGB personalizable",120,169,18,5,Corsair,12
+8,Disco SSD Samsung 980 Pro 1TB,"NVMe PCIe 4.0, velocidad lectura 7000MB/s",110,149,22,10,Samsung,15
+9,Tarjeta Gráfica ASUS GeForce RTX 4080 SUPER TUF Gaming,"16GB GDDR6X, triple ventilador, HDMI/DP",1150,1399,3,1,ASUS,4
+10,Placa Base Gigabyte B650 AORUS Elite AX,"AM5, DDR5, WiFi 6E, PCIe 5.0",150,219,10,4,Gigabyte,6
