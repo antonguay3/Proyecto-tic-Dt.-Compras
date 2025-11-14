@@ -29,11 +29,9 @@ def main():
                 if inp==1:
                     while True:
                         print("Introduzca el id del producto.\n")
-                        inp=input()
+                        idp=int(input())
                         try:
                             if 0<int(inp)<999: #<---[-]Hay que obtener el máximo id disponible!
-                                inp=int(inp)
-                                id_producto=inp
                                 break
                             else:
                                 print("Id inválido\n")
@@ -41,19 +39,18 @@ def main():
                             print("Id inválido\n")
                     while True:
                         print("Introduzca la cantidad a pedir.\n")
-                        inp=input()
+                        cant=int(input())
                         try:
-                            if 0<int(inp)<999: #<---[-]Hay que obtener el máximo id disponible!
-                                inp=int(inp)
-                                cantidad=inp
+                            if 0<int(cant)<999: #<---[-]Hay que obtener el máximo id disponible!
                                 break
                             else:
                                 print("Cantidad inválida\n")
                         except:
                             print("Cantidad inválida\n")
-                    if input(f"pedir {cantidad} de [id:{id_producto}]? Y/N: ") = yes:
-                        pass
-                    elif no = no:
+                    if input(f"pedir {cant} de [id:{idp}]? Y/N: ") == yes:
+                        hacer_pedido(idp,cant)
+                        print(coste)
+                    elif no == no:
                         pass
                     #################################################################
                 if inp==2:
