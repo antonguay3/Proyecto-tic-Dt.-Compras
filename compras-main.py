@@ -20,11 +20,10 @@ while True: #Bucle con try-except para preguntar que función función quiere re
                 
                 while True: #Bucle con try-except para preguntar el id del producto a pedir#
                     print("Introduzca el id del producto.\n")
-                    inp=input()
+                    id_producto=input()
                     try:
-                        if 0<int(inp)<len(pinf.index): #<---[-]Hay que obtener el máximo id disponible!
-                            inp=int(inp)
-                            id_producto=inp
+                        if 0<int(id_producto)<len(pinf.index): #<---[-]Hay que obtener el máximo id disponible!
+                            id_producto=int(id_producto)
                             break
                         else:
                             print("Id inválido\n")
@@ -33,11 +32,10 @@ while True: #Bucle con try-except para preguntar que función función quiere re
                         
                 while True: #Bucle con try-except para preguntar la cantidad a pedir#
                     print("Introduzca la cantidad a pedir.\n")
-                    inp=input()
+                    cantidad=input()
                     try:
-                        if 0<int(inp)<255: #<---[-]Debería haber un máximo?
-                            inp=int(inp)
-                            cantidad=inp
+                        if 0<int(inp): #<---[-]Debería haber un máximo?
+                            cantidad=int(cantidad)
                             break
                         else:
                             print("Cantidad inválida\n")
