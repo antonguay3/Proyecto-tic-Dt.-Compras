@@ -1,72 +1,96 @@
 import pandas as pd
 import compras as cm
+import unicodedata
 
 pinf=pd.read_csv("productos_informatica.csv")
 comp=pd.read_csv("compras.csv")
 
-yes=["Yes","yes","Y","y","Sí","Si","sí","si","S","s"]
-no=["No","no","N","n"]
+yes=["si","s","yes","y","ye"]
+no=["no","non","n"]
 
 
-inp=""
 
-while True: #Bucle con try-except para preguntar que función función quiere realizar#
-    print("Que función quiere realizar? Utilize los números 1-4.\n1. Hacer un pedido.\n2. Actualizar el precio de compra de un producto.\n3. Consultar los pedidos de un producto.\n4. Consultar los pedidos en un mes.")
-    inp=input()
-    try:
-        if 1<=int(inp)<=4:
-            inp=(int(inp))
-            if inp==1:
-                
-                while True: #Bucle con try-except para preguntar el id del producto a pedir#
-                    print("Introduzca el id del producto.\n")
-                    id_producto=input()
-                    try:
-                        if 0<int(id_producto)<len(pinf.index): #<---[-]Hay que obtener el máximo id disponible!
-                            id_producto=int(id_producto)
-                            break
-                        else:
-                            print("Id inválido\n")
-                    except:
-                        print("Entrada inválida\n")
+def norinput(inp): #Input sin tildes ni mayus
+    return "".join(c for c in unicodedata.normalize("NFD", input(inp)) if unicodedata.category(c) != "Mn").lower()
+
+while True:
+    match input("Que función quiere realizar? Utilize los números 1-4.\n1. Hacer un pedido.\n2. Actualizar el precio de compra de un producto.\n3. Consultar los pedidos de un producto.\n4. Consultar los pedidos en un mes.\n"):
+        case "1":
+            while True:
+                try:
+                    id_producto=int(input("Introduzca el ID del producto.\n"))
+                    if 0<id_producto<len(pinf.index):
+                        break
+                    else:
+                        print("ID inválido")
+                except:
+                    print("Entráda inválida.")
+
+            while True:
+                try:
+                    cantidad=abs(int(input("Introduzca la cantidad a pedir.\n")))
+                    break
+                except:
+                    print("Cantidad inválida")
+
+            while True:
+                match norinput(f"pedir {cantidad}u de'{pinf.loc[pinf["ID"]==id_producto]["Nombre del producto"].to_string(index=False)}'?\tY/N: "):
+                    case x if x in yes:
+                        cm.hacer_pedido(id_producto,cantidad)
+                        break
+                    case x if x in no:
+                        break
+                    case _:
+                        print("Entrada inválida")
                         
-                while True: #Bucle con try-except para preguntar la cantidad a pedir#
-                    print("Introduzca la cantidad a pedir.\n")
-                    cantidad=input()
-                    try:
-                        if 0<int(inp): #<---[-]Debería haber un máximo?
-                            cantidad=int(cantidad)
-                            break
-                        else:
-                            print("Cantidad inválida\n")
-                    except:
-                        print("Entrada inválida\n")
+        case "2":
+            while True:
+                try:
+                    id_producto=int(input("Introduzca el ID del producto.\n"))
+                    if 0<id_producto<len(pinf.index):
+                        break
+                    else:
+                        print("ID inválido")
+                except:
+                    print("Entráda inválida.")
+
+            while True:
+                try:
+                    nuevo_precio=abs(float(input("Introduzca el nuevo precio de compra.\n")))
+                    break
+                except:
+                    print("Precio inválido")
+
+            while True:
+                match norinput(f"Actualizar precio de compra de'{pinf.loc[pinf["ID"]==id_producto]["Nombre del producto"].to_string(index=False)}' a {nuevo_precio}?\tY/N: "):
+                    case x if x in yes:
+                        cm.actualizar_precio_compra(id_producto,nuevo_precio)
+                        break
+                    case x if x in no:
+                        break
+                    case _:
+                        print("Entrada inválida")
                         
-                while True: #Bucle con try-except para confirmar el pedido#
-                    print(f"pedir {cantidad}u de","'"+pinf.loc[pinf["ID"]==id_producto]["Nombre del producto"].to_string(index=False)+"'"," Y/N: ")
-                    inp=str(input())
-                    try:
-                        if inp in yes:
-                            cm.hacer_pedido(id_producto,cantidad)
-                            break
-                        elif inp in no:
-                            break
-                        else:
-                            print("Respuesta in válida\n")
-                    except:
-                        print("Entrada inválida\n")
-            if inp==2:
-                pass
-            if inp==3:
-                pass
-            if inp==4:
-                pass
-        else:
-            print("No existe esa función\n")
-    except:
-        print("No existe esa función\n")
-
-
-
-
-    
+        case "3":
+            while True:
+                try:
+                    id_producto=int(input("Introduzca el ID del producto.\n"))
+                    if 0<id_producto<len(pinf.index):
+                        cm.pedidos_prod(id_producto)
+                        break
+                    else:
+                        print("ID inválido")
+                except:
+                    print("Entráda inválida.")
+                    
+        case "4":
+            while True:
+                try:
+                    mes=int(input("Introduzca el mes como número (1-12)\n"))
+                    if 0<mes<13:
+                        cm.pedido_mes(mes)
+                        break
+                    else:
+                        print("Mes inválido")
+                except:
+                    print("Entrada inválida")
