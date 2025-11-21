@@ -1,4 +1,4 @@
-﻿ID,Nombre del producto,Descripción (otras datos importantes del producto),Precio de compra,Precio de venta,Stock actual,Stock mínimo deseado,Proveedor,Lote
+﻿ID,Nombre del producto,Descripcion,Precio de compra,Precio de venta,Stock actual,Stock minimo deseado,Proveedor,Lote
 1,Portátil HP 15s-eq2135ns,"AMD Ryzen 5 5500U, 16GB RAM, 512GB SSD, 15.6'' Full HD",480,649,12,5,HP,4
 2,Monitor LG UltraGear 27GL850-B,"27'' QHD, Nano IPS, 144Hz, 1ms, G-Sync compatible",320,399,8,3,LG,3
 3,Smartphone Samsung Galaxy S24,"8GB RAM, 256GB almacenamiento, 6.1'' AMOLED, 5G",680,899,15,5,Samsung,8
